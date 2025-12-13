@@ -356,3 +356,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = LaneDetectionApp(root, "video 3 november.mp4")  # ganti dengan path videomu
     root.mainloop()
+
