@@ -17,11 +17,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
       setTheme(savedTheme);
     }
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -37,14 +37,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
-      {children}
+      <div style={{ visibility: mounted ? 'visible' : 'hidden' }}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }
@@ -56,3 +53,4 @@ export function useTheme() {
   }
   return context;
 }
+
