@@ -1,6 +1,0 @@
-{
-    "buildCommand": "cd lane-detection-ui && npm install && npm run build",
-    "outputDirectory": "lane-detection-ui/.next",
-    "installCommand": "cd lane-detection-ui && npm install",
-    "framework": "nextjs"
-}
