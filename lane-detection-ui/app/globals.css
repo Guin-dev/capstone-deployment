@@ -3,9 +3,25 @@
 :root {
   --background: #050505;
   --foreground: #ffffff;
-  --accent: #3b82f6; /* Modern Blue */
+  --accent: #3b82f6;
+  /* Modern Blue */
   --surface: #0a0a0a;
   --border: #1f1f1f;
+  --border-hover: #333;
+  --text-muted: #a3a3a3;
+  --text-subtle: #737373;
+}
+
+/* Light theme */
+.light {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --accent: #2563eb;
+  --surface: #ffffff;
+  --border: #e5e5e5;
+  --border-hover: #d4d4d4;
+  --text-muted: #525252;
+  --text-subtle: #737373;
 }
 
 @theme {
@@ -20,6 +36,7 @@ body {
   font-family: var(--font-geist-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Minimal Scrollbar */
@@ -27,15 +44,18 @@ body {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--border);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--border-hover);
 }
 
 /* Utilities */
@@ -46,14 +66,22 @@ body {
 }
 
 .bento-card:hover {
-  border-color: #333;
+  border-color: var(--border-hover);
 }
 
 /* Subtle animation for status indicators */
 @keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
+
 .animate-pulse-slow {
   animation: pulse-subtle 3s infinite ease-in-out;
 }

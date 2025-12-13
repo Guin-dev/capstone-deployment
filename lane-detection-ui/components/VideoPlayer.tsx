@@ -28,8 +28,8 @@ export default function VideoPlayer({ piIp, isConnected, displayMode, viewMode }
   if (!isConnected) {
     return (
       <div className="bento-card w-full h-full rounded-2xl overflow-hidden flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4 text-neutral-600">
-          <div className="w-12 h-12 border-2 border-white/5 border-t-white/20 rounded-full animate-spin"></div>
+        <div className="flex flex-col items-center gap-4 text-[var(--text-subtle)]">
+          <div className="w-12 h-12 border-2 border-[var(--border)] border-t-[var(--accent)] rounded-full animate-spin"></div>
           <p className="text-xs font-mono uppercase tracking-widest">Signal Lost</p>
         </div>
       </div>
@@ -47,12 +47,12 @@ export default function VideoPlayer({ piIp, isConnected, displayMode, viewMode }
         </div>
         <button onClick={toggleFullscreen} className="pointer-events-auto bg-white/10 hover:bg-white/20 p-2 rounded-lg backdrop-blur-md transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
-            <path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/>
+            <path d="M15 3h6v6" /><path d="M9 21H3v-6" /><path d="M21 3l-7 7" /><path d="M3 21l7-7" />
           </svg>
         </button>
       </div>
 
-      <div className="flex-1 bg-[#050505] relative flex items-center justify-center p-4">
+      <div className="flex-1 bg-[var(--background)] relative flex items-center justify-center p-4">
         {displayMode === 'both' ? (
           <div className="grid grid-cols-2 gap-4 w-full h-full">
             <div className="relative flex items-center justify-center bg-black rounded-lg overflow-hidden">
@@ -69,7 +69,8 @@ export default function VideoPlayer({ piIp, isConnected, displayMode, viewMode }
         )}
       </div>
 
-      <div className="absolute inset-0 border border-white/5 pointer-events-none rounded-2xl"></div>
+      <div className="absolute inset-0 border border-[var(--border)] pointer-events-none rounded-2xl"></div>
     </div>
   );
 }
+
