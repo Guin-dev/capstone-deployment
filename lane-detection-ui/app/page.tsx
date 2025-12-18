@@ -8,7 +8,7 @@ import ViewControls from '@/components/ViewControls';
 import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
-  const [piIp, setPiIp] = useState('172.20.10.2');
+  const [piIp, setPiIp] = useState('nondetractive-darcel-eluvial.ngrok-free.dev');
   const [status, setStatus] = useState<any>(null);
   const [isConnected, setIsConnected] = useState(false);
 
@@ -19,7 +19,11 @@ export default function Home() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch(`http://${piIp}:5000/api/status`);
+        // Auto-detect protocol and port based on hostname
+        const isNgrok = piIp.includes('ngrok');
+        const protocol = isNgrok ? 'https' : 'http';
+        const port = isNgrok ? '' : ':5000';
+        const res = await fetch(`${protocol}://${piIp}${port}/api/status`);
         if (res.ok) {
           const data = await res.json();
           setStatus(data);

@@ -36,7 +36,13 @@ export default function VideoPlayer({ piIp, isConnected, displayMode, viewMode }
     );
   }
 
-  const getUrl = (type: string) => `http://${piIp}:5000/video_feed?type=${type}&mode=${viewMode}`;
+  const getUrl = (type: string) => {
+    // Auto-detect protocol and port based on hostname
+    const isNgrok = piIp.includes('ngrok');
+    const protocol = isNgrok ? 'https' : 'http';
+    const port = isNgrok ? '' : ':5000';
+    return `${protocol}://${piIp}${port}/video_feed?type=${type}&mode=${viewMode}`;
+  };
 
   return (
     <div id="video-container" className="bento-card w-full h-full rounded-2xl overflow-hidden relative group flex flex-col">
