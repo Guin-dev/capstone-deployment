@@ -21,13 +21,15 @@ export default function SettingsPanel({ piIp, setPiIp }: SettingsPanelProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute top-8 right-0 w-64 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-          <label className="text-[10px] uppercase tracking-widest text-[var(--text-subtle)] block mb-2">Device IP Address</label>
+        <div className="absolute top-8 right-0 w-80 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+          <label className="text-[10px] uppercase tracking-widest text-[var(--text-subtle)] block mb-2">Device IP / Ngrok URL</label>
+          <p className="text-[9px] text-[var(--text-subtle)] mb-3">Enter IP (172.20.10.2) or ngrok URL (abc.ngrok-free.app)</p>
           <div className="flex gap-2">
             <input
               type="text"
               value={tempIp}
               onChange={(e) => setTempIp(e.target.value)}
+              placeholder="e.g. abc123.ngrok-free.app"
               className="flex-1 bg-[var(--background)] border border-[var(--border)] rounded px-3 py-1.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] font-mono"
             />
             <button
