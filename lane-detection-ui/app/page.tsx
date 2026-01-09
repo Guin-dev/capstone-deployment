@@ -8,7 +8,7 @@ import ViewControls from '@/components/ViewControls';
 import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
-  const [piIp, setPiIp] = useState('nondetractive-darcel-eluvial.ngrok-free.dev');
+  const [piIp, setPiIp] = useState('172.20.10.2');
   const [status, setStatus] = useState<any>(null);
   const [isConnected, setIsConnected] = useState(false);
 
